@@ -113,3 +113,18 @@ range' m n
      | m == n = [m]
      | m < n = m: range' (m+1) n
      | otherwise = m:range' (m-1) n
+
+isPrime :: Integer -> Bool
+isPrime x = helper x (ceiling (sqrt (fromIntegral x)))
+    where helper x 1 = True
+          helper x d = if mod x d == 0 then False else helper x (d-1)
+
+primeFactors :: Integer -> [Integer]
+primeFactors x = primehelper x (ceiling (sqrt (fromIntegral x)))
+    where primehelper x 1 = [1]
+          primehelper x n = if mod x n == 0 && isPrime n then n:primehelper x (n-1) else primehelper x (n-1)
+
+isPalindrome :: String -> Bool
+isPalindrome xs = if xs == reverse xs then True else False
+
+
