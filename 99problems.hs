@@ -127,4 +127,9 @@ primeFactors x = primehelper x (ceiling (sqrt (fromIntegral x)))
 isPalindrome :: String -> Bool
 isPalindrome xs = if xs == reverse xs then True else False
 
+gcd' :: Integer -> Integer -> Integer
+gcd' x y = if x > y then gcdhelper x y y else gcdhelper x y x
+    where gcdhelper a b 1 = 1
+          gcdhelper a b n = if mod a n == 0 && mod b n == 0 then n else gcdhelper a b (n-1)
+
 
